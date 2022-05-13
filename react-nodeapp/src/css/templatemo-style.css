@@ -1260,6 +1260,11 @@ footer .contact-info ul li a {
   font-style: italic;
 }
 
+.service-item h6 span {
+  margin: 0 0.5rem;
+  text-transform: capitalize;
+}
+
 .center {
   display: flex;
   justify-content: center;
