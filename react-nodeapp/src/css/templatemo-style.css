@@ -1252,12 +1252,14 @@ footer .contact-info ul li a {
   width: 100%;
   font-weight: bold;
   padding: 1rem;
-  background: #00000020;
+  background: #4883ff;
   border-radius: 0.6rem;
+  color: white;
 }
 
 .service-item h6 {
   font-style: italic;
+  color: #4883ff;
 }
 
 .service-item h6 span {

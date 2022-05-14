@@ -1,3 +1,5 @@
+import footerLogo from "../img/footer_logo.png";
+
 const FooterPage = () => (
   <footer className="footer">
     <div className="container">
@@ -5,7 +7,7 @@ const FooterPage = () => (
         <div className="col-md-5">
           <div className="about-veno">
             <div className="logo">
-              <img src="img/footer_logo.png" alt="Venue Logo" />
+              <img src={footerLogo} alt="Venue Logo" />
             </div>
             <p>
               Mauris sit amet quam congue, pulvinar urna et, congue diam. Suspendisse eu lorem massa. Integer sit amet posuere tellus, id efficitur

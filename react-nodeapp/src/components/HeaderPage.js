@@ -1,3 +1,5 @@
+import logo from "../img/logo.png";
+
 const HeaderPage = () => (
   <div className="wrap">
     <header id="header">
@@ -6,7 +8,7 @@ const HeaderPage = () => (
           <div className="col-md-12">
             <a href="index.html">
               <div className="logo">
-                <img src="img/logo.png" alt="Venue Logo" />
+                <img src={logo} alt="Venue Logo" />
               </div>
             </a>
             <nav id="primary-nav" className="dropdown cf">
