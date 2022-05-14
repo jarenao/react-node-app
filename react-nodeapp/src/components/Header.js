@@ -1,6 +1,6 @@
 import logo from "../img/logo.png";
 
-const HeaderPage = () => (
+const Header = () => (
   <div className="wrap">
     <header id="header">
       <div className="container">
@@ -27,4 +27,4 @@ const HeaderPage = () => (
   </div>
 );
 
-export default HeaderPage;
+export default Header;

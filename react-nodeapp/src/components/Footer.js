@@ -1,6 +1,6 @@
 import footerLogo from "../img/footer_logo.png";
 
-const FooterPage = () => (
+const Footer = () => (
   <footer className="footer">
     <div className="container">
       <div className="row">
@@ -84,4 +84,4 @@ const FooterPage = () => (
   </footer>
 );
 
-export default FooterPage;
+export default Footer;

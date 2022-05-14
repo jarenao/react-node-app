@@ -1,4 +1,4 @@
-const AdDetail = () => (
+const AdDetailPage = () => (
   <section className="detail" id="detail">
     <div className="container">
       <div className="row">
@@ -31,4 +31,4 @@ const AdDetail = () => (
   </section>
 );
 
-export default AdDetail;
+export default AdDetailPage;

@@ -1,18 +1,22 @@
-import HeaderPage from "./components/HeaderPage";
+import Header from "./components/Header";
 import AdsPage from "./components/ads/AdsPage";
-import FooterPage from "./components/FooterPage";
+import Footer from "./components/Footer";
 import SubFooter from "./components/SubFooter";
 import BannerPage from "./components/Banner";
-import AdDetail from "./components/ads/AdDetail";
+import AdDetailPage from "./components/ads/AdDetailPage";
+import LoginPage from "./components/LoginPage";
+import AdNewPage from "./components/ads/AdNewPage";
 
 function App() {
   return (
     <div className="App">
-      <HeaderPage />
+      <Header />
       <BannerPage />
       <AdsPage />
-      <AdDetail />
-      <FooterPage />
+      <AdDetailPage />
+      <LoginPage />
+      <AdNewPage />
+      <Footer />
       <SubFooter />
     </div>
   );
