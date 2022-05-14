@@ -14,6 +14,7 @@ const ads = [
     id: 2,
   },
 ];
+
 const AdsPage = () => (
   <div className="elementPage">
     <section className="our-services" id="services">
