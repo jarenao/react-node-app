@@ -6,9 +6,9 @@ import AdNewPage from "./components/ads/AdNewPage";
 function App() {
   return (
     <div className="App">
-      <AdsPage />
-      <AdDetailPage />
-      <LoginPage />
+      {/* <AdsPage /> */}
+      {/* <AdDetailPage /> */}
+      {/* <LoginPage /> */}
       <AdNewPage />
     </div>
   );
