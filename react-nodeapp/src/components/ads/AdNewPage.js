@@ -15,7 +15,7 @@ const AdNewPage = () => (
           <div className="col-md-10">
             <form className="form-horizontal" id="ad-form">
               <div className="form-group">
-                <label for="ad-name" className="col-sm-2 control-label">
+                <label htmlFor="ad-name" className="col-sm-2 control-label">
                   Name
                 </label>
                 <div className="col-sm-10">
@@ -23,7 +23,7 @@ const AdNewPage = () => (
                 </div>
               </div>
               <div className="form-group">
-                <label for="ad-price" className="col-sm-2 control-label">
+                <label htmlFor="ad-price" className="col-sm-2 control-label">
                   Price
                 </label>
                 <div className="col-sm-10">
@@ -31,7 +31,7 @@ const AdNewPage = () => (
                 </div>
               </div>
               <div className="form-group">
-                <label className="control-label col-sm-2" for="customFile">
+                <label className="control-label col-sm-2" htmlFor="customFile">
                   Image
                 </label>
                 <div className="col-sm-10">
@@ -53,7 +53,7 @@ const AdNewPage = () => (
 
               <div className="form-group">
                 <div className="col-sm-12">
-                  <label for="ad-price" className="col-sm-2 control-label">
+                  <label htmlFor="ad-price" className="col-sm-2 control-label">
                     Tags
                   </label>
                   <div className="col-sm-10">
