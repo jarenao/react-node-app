@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Layout from "../layout/Layout";
+import { login } from "./service";
 
 const LoginForm = () => {
   const [credentials, setCredentials] = useState({ email: "", password: "", remember: false });
@@ -13,9 +14,15 @@ const LoginForm = () => {
     }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(credentials);
+    try {
+      const { accessToken } = await login(credentials);
+      console.log("accessToken", accessToken);
+    } catch (error) {
+      console.log(error);
+    }
+    // console.log(credentials);
   };
 
   return (

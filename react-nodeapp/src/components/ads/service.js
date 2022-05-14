@@ -12,11 +12,6 @@ export const getTags = () => {
   return client.get(url);
 };
 
-export const login = () => {
-  const url = `${adsBaseUrl}/auth/login`;
-  return client.post(url);
-};
-
 export const setAdverts = () => {
   const url = `${adsBaseUrl}/v1/adverts`;
   return client.post(url);
