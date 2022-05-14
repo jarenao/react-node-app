@@ -6,3 +6,24 @@ export const getLatestAds = () => {
   const url = `${adsBaseUrl}/v1/adverts`;
   return client.get(url);
 };
+
+export const getTags = () => {
+  const url = `${adsBaseUrl}/v1/adverts/tags`;
+  return client.get(url);
+};
+
+export const login = () => {
+  const url = `${adsBaseUrl}/auth/login`;
+  return client.post(url);
+};
+
+export const setAdverts = () => {
+  const url = `${adsBaseUrl}/v1/adverts`;
+  return client.post(url);
+};
+
+//TODO
+// Delete anuncio :id
+
+//TODO
+// Detalle del anuncio :id

@@ -1,4 +1,4 @@
-import footerLogo from "../img/footer_logo.png";
+import footerLogo from "../../img/footer_logo.png";
 
 const Footer = () => (
   <footer className="footer">
