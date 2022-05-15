@@ -1357,6 +1357,8 @@ footer .contact-info ul li a {
 .error-container h1 {
   font-size: 15rem;
   margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
 }
 
 .error-container .return {
