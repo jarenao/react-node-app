@@ -12,16 +12,21 @@ const Header = ({ onLogout }) => {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <a href="index.html">
-                <div className="logo">
+              <div className="logo">
+                <a href="#">
                   <img src={logo} alt="Venue Logo" />
-                </div>
-              </a>
+                </a>
+              </div>
               {onLogout && (
                 <nav id="primary-nav" className="dropdown cf">
                   <ul className="menu">
                     <li>
-                      <a className="scrollTo" href="#" onClick={handleLogoutClick}>
+                      <a className="" href="#">
+                        New adverts
+                      </a>
+                    </li>
+                    <li>
+                      <a className="" href="#" onClick={handleLogoutClick}>
                         Logout
                       </a>
                     </li>

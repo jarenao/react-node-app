@@ -55,6 +55,11 @@ const Footer = ({ onLogout }) => {
                         </a>
                       </li>
                       <li>
+                        <a href="#">
+                          <i className="fa fa-stop"></i>New adverts
+                        </a>
+                      </li>
+                      <li>
                         <a href="#" onClick={handleLogoutClick}>
                           <i className="fa fa-stop"></i>Logout
                         </a>
