@@ -2,7 +2,7 @@ import { useState } from "react";
 import Layout from "../layout/Layout";
 import { login } from "./service";
 
-const LoginForm = () => {
+const LoginForm = ({ onLogin }) => {
   const [credentials, setCredentials] = useState({ email: "", password: "", remember: false });
 
   const { email, password, remember } = credentials;
@@ -18,6 +18,7 @@ const LoginForm = () => {
     event.preventDefault();
     try {
       const { accessToken } = await login(credentials);
+      onLogin();
       console.log("accessToken", accessToken);
     } catch (error) {
       console.log(error);
