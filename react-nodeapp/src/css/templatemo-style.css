@@ -1337,3 +1337,7 @@ footer .contact-info ul li a {
   font-size: 1.3rem;
   font-style: italic;
 }
+
+.mt-3 {
+  margin-top: 3rem;
+}

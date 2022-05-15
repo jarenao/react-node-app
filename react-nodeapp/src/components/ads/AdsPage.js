@@ -27,7 +27,7 @@ const AdsPage = ({ isLogged, onLogout }) => {
           </div>
           <div className="row">
             {ads.map((ad) => (
-              <div key={ad.id} className="col-md-4">
+              <div key={ad.id} className="col-md-4 mt-3">
                 <div className="service-item">
                   <h4>{ad.name}</h4>
                   <h6>
