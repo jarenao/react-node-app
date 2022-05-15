@@ -2,29 +2,17 @@ import { useState, useEffect } from "react";
 import { getLatestAds } from "./service";
 import Layout from "../layout/Layout";
 
-const ads = [
-  {
-    name: "Cajón",
-    sale: true,
-    price: 20,
-    tags: ["lifestyle"],
-    id: 1,
-  },
-  {
-    name: "Balón",
-    sale: false,
-    price: 40,
-    tags: ["work", "motor"],
-    id: 2,
-  },
-];
-
 const AdsPage = ({ isLogged, onLogout }) => {
-  // const [ads, setAds] = useState([]);
+  const [ads, setAds] = useState([]);
 
-  // useEffect(() => {
-  //   getLatestAds().then((ads) => setAds(ads));
-  // }, []);
+  useEffect(() => {
+    const execute = async () => {
+      const ads = await getLatestAds();
+      setAds(ads);
+    };
+    execute();
+    return () => {};
+  }, []);
 
   return (
     <Layout isLogged={isLogged} onLogout={onLogout}>
