@@ -19,7 +19,7 @@ const ads = [
   },
 ];
 
-const AdsPage = () => {
+const AdsPage = ({ isLogged, onLogout }) => {
   // const [ads, setAds] = useState([]);
 
   // useEffect(() => {
@@ -27,7 +27,7 @@ const AdsPage = () => {
   // }, []);
 
   return (
-    <Layout>
+    <Layout isLogged={isLogged} onLogout={onLogout}>
       <section className="our-services" id="services">
         <div className="container">
           <div className="row">

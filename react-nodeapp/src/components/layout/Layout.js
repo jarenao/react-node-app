@@ -3,12 +3,12 @@ import Footer from "./Footer";
 import Banner from "./Banner";
 import SubFooter from "./SubFooter";
 
-const Layout = ({ children }) => (
+const Layout = ({ children, isLogged, onLogout }) => (
   <div>
-    <Header />
-    <Banner />
+    <Header onLogout={onLogout} />
+    {isLogged ? <Banner isLogged={isLogged} /> : null}
     {children}
-    <Footer />
+    <Footer onLogout={onLogout} />
     <SubFooter />
   </div>
 );
