@@ -1,8 +1,11 @@
+import { useState } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
+
 import AdsPage from "./components/ads/AdsPage";
 import AdDetailPage from "./components/ads/AdDetailPage";
 import LoginPage from "./components/login/LoginPage";
 import AdNewPage from "./components/ads/AdNewPage";
-import { useState } from "react";
+import NotFound from "./components/layout/404";
 
 function App({ isInitiallyLogged }) {
   const [isLogged, setIsLogged] = useState(isInitiallyLogged);
@@ -15,9 +18,18 @@ function App({ isInitiallyLogged }) {
 
   return (
     <div className="App">
+      <Routes>
+        <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
+        <Route path="/adverts" element={<AdsPage isLogged={isLogged} onLogout={handleLogout} />} />
+        <Route path="/adverts/:adsId" element={<AdDetailPage />} />
+        <Route path="/new" element={<AdNewPage />} />
+        <Route path="/" element={<Navigate to="/ads" />} />
+        <Route path="/404" element={<NotFound />} />
+        <Route path="*" element={<Navigate to="/404" />} />
+      </Routes>
       {/* <AdDetailPage /> */}
       {/* <AdNewPage /> */}
-      {isLogged ? <AdsPage isLogged={isLogged} onLogout={handleLogout} /> : <LoginPage onLogin={handleLogin} />}
+      {/* {isLogged ? <AdsPage isLogged={isLogged} onLogout={handleLogout} /> : <LoginPage onLogin={handleLogin} />} */}
     </div>
   );
 }
