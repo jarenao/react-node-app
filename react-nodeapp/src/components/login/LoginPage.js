@@ -23,14 +23,13 @@ const LoginForm = ({ onLogin }) => {
     try {
       resetError();
       setIsLoading(true);
-      const { accessToken } = await login(credentials);
+      await login(credentials);
       setIsLoading(false);
       onLogin();
-      console.log("accessToken", accessToken);
     } catch (error) {
       setError(error);
       setIsLoading(false);
-      console.log(error);
+      // console.log(error);
     }
     // console.log(credentials);
   };

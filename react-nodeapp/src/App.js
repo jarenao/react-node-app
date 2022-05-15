@@ -4,8 +4,8 @@ import LoginPage from "./components/login/LoginPage";
 import AdNewPage from "./components/ads/AdNewPage";
 import { useState } from "react";
 
-function App() {
-  const [isLogged, setIsLogged] = useState(false);
+function App({ isInitiallyLogged }) {
+  const [isLogged, setIsLogged] = useState(isInitiallyLogged);
 
   const handleLogin = () => setIsLogged(true);
   return (
