@@ -1,9 +1,12 @@
 import { useState } from "react";
+import Spinner from "../common/Spinner";
 import Layout from "../layout/Layout";
 import { login } from "./service";
 
 const LoginForm = ({ onLogin }) => {
   const [credentials, setCredentials] = useState({ email: "", password: "", remember: false });
+
+  const [isLoading, setIsLoading] = useState(false);
 
   const { email, password, remember } = credentials;
 
@@ -17,10 +20,13 @@ const LoginForm = ({ onLogin }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
+      setIsLoading(true);
       const { accessToken } = await login(credentials);
+      setIsLoading(false);
       onLogin();
       console.log("accessToken", accessToken);
     } catch (error) {
+      setIsLoading(false);
       console.log(error);
     }
     // console.log(credentials);
@@ -93,6 +99,7 @@ const LoginForm = ({ onLogin }) => {
                   </div>
                 </div>
               </form>
+              {isLoading && <Spinner />}
             </div>
           </div>
         </div>
