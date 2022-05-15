@@ -1326,3 +1326,14 @@ footer .contact-info ul li a {
     transform: rotate(360deg);
   }
 }
+
+.error {
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+.error span {
+  color: #c00;
+  font-size: 1.3rem;
+  font-style: italic;
+}

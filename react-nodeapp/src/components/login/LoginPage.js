@@ -5,9 +5,8 @@ import { login } from "./service";
 
 const LoginForm = ({ onLogin }) => {
   const [credentials, setCredentials] = useState({ email: "", password: "", remember: false });
-
   const [isLoading, setIsLoading] = useState(false);
-
+  const [error, setError] = useState(null);
   const { email, password, remember } = credentials;
 
   const handleChange = (event) => {
@@ -17,15 +16,19 @@ const LoginForm = ({ onLogin }) => {
     }));
   };
 
+  const resetError = () => setError(null);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
+      resetError();
       setIsLoading(true);
       const { accessToken } = await login(credentials);
       setIsLoading(false);
       onLogin();
       console.log("accessToken", accessToken);
     } catch (error) {
+      setError(error);
       setIsLoading(false);
       console.log(error);
     }
@@ -93,10 +96,15 @@ const LoginForm = ({ onLogin }) => {
                 </div>
                 <div className="form-group">
                   <div className="col-sm-offset-2 col-sm-10">
-                    <button type="submit" className="btn" disabled={!email || !password}>
+                    <button type="submit" className="btn" disabled={!email || !password || isLoading}>
                       Sign in
                     </button>
                   </div>
+                  {error && (
+                    <div onClick={resetError} className="col-sm-offset-2 col-sm-10 error">
+                      <span>{error.message}</span>
+                    </div>
+                  )}
                 </div>
               </form>
               {isLoading && <Spinner />}
