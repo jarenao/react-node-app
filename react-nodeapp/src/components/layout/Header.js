@@ -1,3 +1,4 @@
+import { Link, NavLink } from "react-router-dom";
 import logo from "../../img/logo.png";
 import { logout } from "../login/service";
 
@@ -12,23 +13,23 @@ const Header = ({ onLogout }) => {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <div className="logo">
-                <a href="#">
+              <Link to="/adverts">
+                <div className="logo">
                   <img src={logo} alt="Venue Logo" />
-                </a>
-              </div>
+                </div>
+              </Link>
               {onLogout && (
                 <nav id="primary-nav" className="dropdown cf">
                   <ul className="menu">
                     <li>
-                      <a className="" href="#">
+                      <NavLink to="/new" style={({ isActive }) => (isActive ? { color: "#4883ff" } : null)}>
                         New adverts
-                      </a>
+                      </NavLink>
                     </li>
                     <li>
-                      <a className="" href="#" onClick={handleLogoutClick}>
+                      <Link to="/login" onClick={handleLogoutClick}>
                         Logout
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </nav>

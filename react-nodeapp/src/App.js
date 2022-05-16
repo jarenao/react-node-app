@@ -23,7 +23,7 @@ function App({ isInitiallyLogged }) {
         <Route path="/adverts" element={<AdsPage isLogged={isLogged} onLogout={handleLogout} />} />
         <Route path="/adverts/:adsId" element={<AdDetailPage />} />
         <Route path="/new" element={<AdNewPage />} />
-        <Route path="/" element={<Navigate to="/ads" />} />
+        <Route path="/" element={<Navigate to="/adverts" />} />
         <Route path="/404" element={<NotFound />} />
         <Route path="*" element={<Navigate to="/404" />} />
       </Routes>

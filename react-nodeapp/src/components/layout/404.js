@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const NotFound = () => {
   return (
     <div className="error-container">
@@ -5,7 +7,7 @@ const NotFound = () => {
         4<i className="fa fa-frown-o"></i>4
       </h1>
       <p className="return">
-        Back to <a href="#">Home page</a>
+        Back to <Link to="/adverts">Home page</Link>
       </p>
     </div>
   );

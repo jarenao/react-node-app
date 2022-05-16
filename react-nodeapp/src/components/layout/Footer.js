@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import footerLogo from "../../img/footer_logo.png";
 import { logout } from "../login/service";
 
@@ -13,7 +14,9 @@ const Footer = ({ onLogout }) => {
           <div className="col-md-5">
             <div className="about-veno">
               <div className="logo">
-                <img src={footerLogo} alt="Venue Logo" />
+                <Link to="/adverts">
+                  <img src={footerLogo} alt="Venue Logo" />
+                </Link>
               </div>
               <p>
                 Mauris sit amet quam congue, pulvinar urna et, congue diam. Suspendisse eu lorem massa. Integer sit amet posuere tellus, id efficitur
@@ -21,21 +24,25 @@ const Footer = ({ onLogout }) => {
               </p>
               <ul className="social-icons">
                 <li>
-                  <a href="#">
+                  <Link to="/">
                     <i className="fa fa-facebook"></i>
-                  </a>
-                  <a href="#">
+                  </Link>
+
+                  <Link to="/">
                     <i className="fa fa-twitter"></i>
-                  </a>
-                  <a href="#">
+                  </Link>
+
+                  <Link to="/">
                     <i className="fa fa-linkedin"></i>
-                  </a>
-                  <a href="#">
+                  </Link>
+
+                  <Link to="/">
                     <i className="fa fa-rss"></i>
-                  </a>
-                  <a href="#">
+                  </Link>
+
+                  <Link to="/">
                     <i className="fa fa-dribbble"></i>
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -50,19 +57,19 @@ const Footer = ({ onLogout }) => {
                   <div className="col-md-6">
                     <ul>
                       <li>
-                        <a href="#">
+                        <Link to="/adverts">
                           <i className="fa fa-stop"></i>Home
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a href="#">
+                        <Link to="/new">
                           <i className="fa fa-stop"></i>New adverts
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a href="#" onClick={handleLogoutClick}>
+                        <Link to="/login" onClick={handleLogoutClick}>
                           <i className="fa fa-stop"></i>Logout
-                        </a>
+                        </Link>
                       </li>
                     </ul>
                   </div>
@@ -79,15 +86,15 @@ const Footer = ({ onLogout }) => {
               <ul>
                 <li>
                   <span>Phone:</span>
-                  <a href="#">010-050-0550</a>
+                  <Link to="/">010-050-0550</Link>
                 </li>
                 <li>
                   <span>Email:</span>
-                  <a href="#">hi@company.co</a>
+                  <Link to="/">hi@company.co</Link>
                 </li>
                 <li>
                   <span>Address:</span>
-                  <a href="#">company.co</a>
+                  <Link to="/">company.co</Link>
                 </li>
               </ul>
             </div>
