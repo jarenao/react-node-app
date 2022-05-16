@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Layout from "../layout/Layout";
 
-const AdNewPage = ({ onLogout, isLogged }) => {
+const AdNewPage = ({ onLogout }) => {
   const [credentials, setCredentials] = useState({ name: "", price: "", urlFile: "", tags: [], typeAd: false });
 
   const { name, price, urlFile, tags, typeAd } = credentials;

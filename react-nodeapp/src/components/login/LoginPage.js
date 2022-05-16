@@ -1,9 +1,12 @@
 import { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import Spinner from "../common/Spinner";
 import Layout from "../layout/Layout";
 import { login } from "./service";
 
 const LoginForm = ({ onLogin }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [credentials, setCredentials] = useState({ email: "", password: "", remember: false });
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -26,12 +29,12 @@ const LoginForm = ({ onLogin }) => {
       await login(credentials);
       setIsLoading(false);
       onLogin();
+      const from = location.state?.from?.pathname || "/";
+      navigate(from, { replace: true });
     } catch (error) {
       setError(error);
       setIsLoading(false);
-      // console.log(error);
     }
-    // console.log(credentials);
   };
 
   return (

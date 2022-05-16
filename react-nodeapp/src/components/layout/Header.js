@@ -19,22 +19,20 @@ const Header = ({ onLogout }) => {
                 </div>
               </Link>
               <nav id="primary-nav" className="dropdown cf">
-                <ul className="menu">
-                  {onLogout && (
+                {onLogout && (
+                  <ul className="menu">
                     <li>
                       <NavLink to="/new" style={({ isActive }) => (isActive ? { color: "#4883ff" } : null)}>
                         New adverts
                       </NavLink>
                     </li>
-                  )}
-                  {onLogout && (
                     <li>
                       <Link to="/login" onClick={handleLogoutClick}>
                         Logout
                       </Link>
                     </li>
-                  )}
-                </ul>
+                  </ul>
+                )}
               </nav>
             </div>
           </div>

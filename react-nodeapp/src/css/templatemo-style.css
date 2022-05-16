@@ -1248,6 +1248,19 @@ footer .contact-info ul li a {
   margin: 2rem 0;
 }
 
+.card-link:hover {
+  text-decoration: none;
+}
+
+.card-link:hover .service-item {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  transition: 0.3s ease-in-out all;
+}
+
+.card-link .service-item {
+  transition: 0.3s ease-in-out all;
+}
+
 .card-footer {
   display: flex;
   justify-content: space-between;

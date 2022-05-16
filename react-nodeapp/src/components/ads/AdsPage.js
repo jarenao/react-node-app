@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { getLatestAds } from "./service";
 import Layout from "../layout/Layout";
+import { Link } from "react-router-dom";
 
 const AdsPage = ({ isLogged, onLogout }) => {
   const [ads, setAds] = useState([]);
@@ -27,23 +28,25 @@ const AdsPage = ({ isLogged, onLogout }) => {
           </div>
           <div className="row">
             {ads.map((ad) => (
-              <div key={ad.id} className="col-md-4 mt-3">
-                <div className="service-item">
-                  <h4>{ad.name}</h4>
-                  <h6>
-                    {ad.tags.map((tag, index) => (
-                      <span key={index}>{tag}</span>
-                    ))}
-                  </h6>
-                  <p>
-                    Etiam viverra nibh at lorem hendrerit porta non nec ligula. Donec hendrerit porttitor pretium. Suspendisse fermentum nec risus.
-                  </p>
-                  <div className="card-footer">
-                    <span>Price: {ad.price}€</span>
-                    <span>{ad.sale ? "Sale" : "Buy"}</span>
+              <Link to="/adverts/:adsId" className="card-link" key={ad.id}>
+                <div className="col-md-4 mt-3">
+                  <div className="service-item">
+                    <h4>{ad.name}</h4>
+                    <h6>
+                      {ad.tags.map((tag, index) => (
+                        <span key={index}>{tag}</span>
+                      ))}
+                    </h6>
+                    <p>
+                      Etiam viverra nibh at lorem hendrerit porta non nec ligula. Donec hendrerit porttitor pretium. Suspendisse fermentum nec risus.
+                    </p>
+                    <div className="card-footer">
+                      <span>Price: {ad.price}€</span>
+                      <span>{ad.sale ? "Sale" : "Buy"}</span>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

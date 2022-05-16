@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Layout from "../layout/Layout";
 
-const AdDetailPage = ({ onLogout, isLogged }) => (
+const AdDetailPage = ({ onLogout }) => (
   <Layout onLogout={onLogout}>
     <section className="detail" id="detail">
       <div className="container">

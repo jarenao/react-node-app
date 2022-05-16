@@ -22,7 +22,6 @@ function App({ isInitiallyLogged }) {
       <Routes>
         <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
         <Route path="/adverts" element={<AdsPage isLogged={isLogged} onLogout={handleLogout} />} />
-        <Route path="/adverts/:adsId" element={<AdDetailPage isLogged={isLogged} onLogout={handleLogout} />} />
         <Route
           path="/new"
           element={
@@ -31,13 +30,18 @@ function App({ isInitiallyLogged }) {
             </RequireAuth>
           }
         />
+        <Route
+          path="/adverts/:adsId"
+          element={
+            <RequireAuth isLogged={isLogged}>
+              <AdDetailPage isLogged={isLogged} onLogout={handleLogout} />
+            </RequireAuth>
+          }
+        />
         <Route path="/" element={<Navigate to="/adverts" />} />
         <Route path="/404" element={<NotFound />} />
         <Route path="*" element={<Navigate to="/404" />} />
       </Routes>
-      {/* <AdDetailPage /> */}
-      {/* <AdNewPage /> */}
-      {/* {isLogged ? <AdsPage isLogged={isLogged} onLogout={handleLogout} /> : <LoginPage onLogin={handleLogin} />} */}
     </div>
   );
 }
