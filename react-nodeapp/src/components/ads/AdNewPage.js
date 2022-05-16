@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Layout from "../layout/Layout";
 
-const AdNewPage = () => {
+const AdNewPage = ({ onLogout, isLogged }) => {
   const [credentials, setCredentials] = useState({ name: "", price: "", urlFile: "", tags: [], typeAd: false });
 
   const { name, price, urlFile, tags, typeAd } = credentials;
@@ -19,7 +19,7 @@ const AdNewPage = () => {
   };
 
   return (
-    <Layout>
+    <Layout onLogout={onLogout}>
       <section className="new-advert-form">
         <div className="container">
           <div className="row">

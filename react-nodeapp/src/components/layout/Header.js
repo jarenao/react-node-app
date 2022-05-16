@@ -18,22 +18,24 @@ const Header = ({ onLogout }) => {
                   <img src={logo} alt="Venue Logo" />
                 </div>
               </Link>
-              {onLogout && (
-                <nav id="primary-nav" className="dropdown cf">
-                  <ul className="menu">
+              <nav id="primary-nav" className="dropdown cf">
+                <ul className="menu">
+                  {onLogout && (
                     <li>
                       <NavLink to="/new" style={({ isActive }) => (isActive ? { color: "#4883ff" } : null)}>
                         New adverts
                       </NavLink>
                     </li>
+                  )}
+                  {onLogout && (
                     <li>
                       <Link to="/login" onClick={handleLogoutClick}>
                         Logout
                       </Link>
                     </li>
-                  </ul>
-                </nav>
-              )}
+                  )}
+                </ul>
+              </nav>
             </div>
           </div>
         </div>

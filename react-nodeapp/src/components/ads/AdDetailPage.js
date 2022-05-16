@@ -1,7 +1,8 @@
+import { Link } from "react-router-dom";
 import Layout from "../layout/Layout";
 
-const AdDetailPage = () => (
-  <Layout>
+const AdDetailPage = ({ onLogout, isLogged }) => (
+  <Layout onLogout={onLogout}>
     <section className="detail" id="detail">
       <div className="container">
         <div className="row">
@@ -24,9 +25,9 @@ const AdDetailPage = () => (
                 <span>Price: 25€</span>
                 <span>Buy</span>
               </div>
-              <a href="#">
+              <Link to="#" onClick={console.log("Quieres Borrar?")}>
                 <i className="fa fa-trash icon-trash" aria-hidden="true"></i>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
