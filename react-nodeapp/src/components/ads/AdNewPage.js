@@ -1,21 +1,60 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Spinner from "../common/Spinner";
 import Layout from "../layout/Layout";
+import { getUserData } from "../login/service";
+import { createAdverts, getTags } from "./service";
 
 const AdNewPage = ({ onLogout }) => {
-  const [credentials, setCredentials] = useState({ name: "", price: "", urlFile: "", tags: [], typeAd: false });
+  const [credentials, setCredentials] = useState({
+    name: "",
+    price: "",
+    photo: "",
+    tags: [],
+    sale: false,
+  });
+  const { name, sale, price, tags, photo } = credentials;
+  const [error, setError] = useState(null);
+  const [tagsAd, setTagsAd] = useState([]);
+  const [user, setUser] = useState(null);
+  // const { id, username } = user;
+  const [isLoading, setIsLoading] = useState(false);
 
-  const { name, price, urlFile, tags, typeAd } = credentials;
+  useEffect(() => {
+    getTags().then((tagsAd) => setTagsAd(tagsAd));
+  }, []);
+
+  useEffect(() => {
+    getUserData().then((user) => setUser(user));
+  }, []);
 
   const handleChange = (event) => {
+    console.log("event.target.type", event.target.type);
     setCredentials((credentials) => ({
       ...credentials,
-      [event.target.name]: event.target.type === "radio" ? event.target.checked : event.target.value,
+      // [event.target.name]: event.target.type === "radio" ? event.target.checked : event.target.value,
+      [event.target.name]:
+        event.target.type === "radio"
+          ? event.target.checked
+          : event.target.type === "file"
+          ? event.target.files[0]
+          : event.target.value,
     }));
   };
 
-  const handleSubmit = (event) => {
+  const resetError = () => setError(null);
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(credentials);
+
+    try {
+      resetError();
+      setIsLoading(true);
+      await createAdverts({ name, sale, price, tags });
+      setIsLoading(false);
+    } catch (error) {
+      setError(error);
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -31,7 +70,11 @@ const AdNewPage = ({ onLogout }) => {
           </div>
           <div className="row">
             <div className="col-md-10">
-              <form className="form-horizontal" id="ad-form" onSubmit={handleSubmit}>
+              <form
+                className="form-horizontal"
+                id="ad-form"
+                onSubmit={handleSubmit}
+              >
                 <div className="form-group">
                   <label htmlFor="name" className="col-sm-2 control-label">
                     Name
@@ -58,7 +101,7 @@ const AdNewPage = ({ onLogout }) => {
                       onChange={handleChange}
                       value={price}
                       name="price"
-                      type="text"
+                      type="number"
                       className="form-control"
                       id="price"
                       placeholder="Price"
@@ -67,21 +110,45 @@ const AdNewPage = ({ onLogout }) => {
                   </div>
                 </div>
                 <div className="form-group">
-                  <label className="control-label col-sm-2" htmlFor="urlFile">
+                  <label className="control-label col-sm-2" htmlFor="photo">
                     Image
                   </label>
                   <div className="col-sm-10">
-                    <input onChange={handleChange} value={urlFile} name="urlFile" type="file" className="form-control" id="urlFile" />
+                    <input
+                      onChange={handleChange}
+                      value={photo}
+                      name="photo"
+                      type="file"
+                      accept="image/*"
+                      className="form-control"
+                      id="photo"
+                    />
                   </div>
                 </div>
                 <div className="form-group">
                   <div className="col-sm-offset-2 col-sm-10">
                     <label>
-                      <input type="radio" onChange={handleChange} value="buy" checked={typeAd} name="typeAd" id="optionsRadios1" required="" />
+                      <input
+                        type="radio"
+                        onChange={handleChange}
+                        value="buy"
+                        checked={sale}
+                        name="sale"
+                        id="optionsRadios1"
+                        required=""
+                      />
                       Buy
                     </label>
                     <label>
-                      <input type="radio" onChange={handleChange} value="sale" checked={typeAd} name="typeAd" id="optionsRadios2" />
+                      <input
+                        type="radio"
+                        onChange={handleChange}
+                        value="sale"
+                        checked={sale}
+                        name="sale"
+                        id="optionsRadios2"
+                        required=""
+                      />
                       Sale
                     </label>
                   </div>
@@ -89,15 +156,26 @@ const AdNewPage = ({ onLogout }) => {
 
                 <div className="form-group">
                   <div className="col-sm-12">
-                    <label htmlFor="ad-price" className="col-sm-2 control-label">
+                    <label
+                      htmlFor="ad-price"
+                      className="col-sm-2 control-label"
+                    >
                       Tags
                     </label>
                     <div className="col-sm-10">
-                      <select name="tags" multiple className="form-control" required="" value={tags} onChange={handleChange}>
-                        <option value={1}>1</option>
-                        <option value={2}>2</option>
-                        <option value={3}>3</option>
-                        <option value={4}>4</option>
+                      <select
+                        name="tags"
+                        multiple
+                        className="form-control"
+                        required=""
+                        value={tags}
+                        onChange={handleChange}
+                      >
+                        {tagsAd.map((tag, index) => (
+                          <option key={index} value={tag}>
+                            {tag}
+                          </option>
+                        ))}
                       </select>
                     </div>
                   </div>
@@ -106,12 +184,25 @@ const AdNewPage = ({ onLogout }) => {
                 <div className="form-group"></div>
                 <div className="form-group">
                   <div className="col-sm-offset-2 col-sm-10">
-                    <button type="submit" className="btn" disabled={!name || !price || !urlFile}>
+                    <button
+                      type="submit"
+                      className="btn"
+                      disabled={!name || !price || !tags}
+                    >
                       Create
                     </button>
                   </div>
+                  {error && (
+                    <div
+                      onClick={resetError}
+                      className="col-sm-offset-2 col-sm-10 error"
+                    >
+                      <span>{error.message}</span>
+                    </div>
+                  )}
                 </div>
               </form>
+              {isLoading && <Spinner />}
             </div>
           </div>
         </div>

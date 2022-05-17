@@ -1343,8 +1343,10 @@ footer .contact-info ul li a {
 }
 
 .error {
-  margin-top: 1rem;
   cursor: pointer;
+  background: #ff000021;
+  margin: 1rem 1.5rem;
+  padding: 1rem;
 }
 
 .error span {

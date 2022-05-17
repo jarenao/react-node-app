@@ -17,3 +17,8 @@ export const logout = () => {
     storage.remove("auth");
   });
 };
+
+export const getUserData = () => {
+  const url = `${adsBaseUrl}/auth/me`;
+  return client.get(url);
+};
