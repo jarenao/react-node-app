@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Navigate } from "react-router-dom";
 import Spinner from "../common/Spinner";
 import Layout from "../layout/Layout";
 import { getUserData } from "../login/service";
@@ -18,6 +19,7 @@ const AdNewPage = ({ onLogout }) => {
   const [user, setUser] = useState(null);
   // const { id, username } = user;
   const [isLoading, setIsLoading] = useState(false);
+  const [createAd, setCreateAd] = useState(null);
 
   useEffect(() => {
     getTags().then((tagsAd) => setTagsAd(tagsAd));
@@ -49,13 +51,18 @@ const AdNewPage = ({ onLogout }) => {
     try {
       resetError();
       setIsLoading(true);
-      await createAdverts({ name, sale, price, tags });
+      const createAd = await createAdverts({ name, sale, price, tags });
+      setCreateAd(createAd);
       setIsLoading(false);
     } catch (error) {
       setError(error);
       setIsLoading(false);
     }
   };
+
+  if (createAd) {
+    return <Navigate to={`/`} />;
+  }
 
   return (
     <Layout onLogout={onLogout}>

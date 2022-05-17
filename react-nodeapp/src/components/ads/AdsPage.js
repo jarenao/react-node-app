@@ -10,7 +10,7 @@ const AdsPage = ({ isLogged, onLogout }) => {
   useEffect(() => {
     const execute = async () => {
       const ads = await getLatestAds();
-      setAds(ads);
+      setAds(ads.reverse());
     };
     execute();
     return () => {};
@@ -32,7 +32,11 @@ const AdsPage = ({ isLogged, onLogout }) => {
             </div>
             <div className="row">
               {ads.map((ad) => (
-                <Link to={`/adverts/${ad.id}`} className="card-link" key={ad.id}>
+                <Link
+                  to={`/adverts/${ad.id}`}
+                  className="card-link"
+                  key={ad.id}
+                >
                   <div className="col-md-4 mt-3">
                     <div className="service-item">
                       <h4>{ad.name}</h4>
@@ -42,8 +46,9 @@ const AdsPage = ({ isLogged, onLogout }) => {
                         ))}
                       </h6>
                       <p>
-                        Etiam viverra nibh at lorem hendrerit porta non nec ligula. Donec hendrerit porttitor pretium. Suspendisse fermentum nec
-                        risus.
+                        Etiam viverra nibh at lorem hendrerit porta non nec
+                        ligula. Donec hendrerit porttitor pretium. Suspendisse
+                        fermentum nec risus.
                       </p>
                       <div className="card-footer">
                         <span>Price: {ad.price}€</span>
