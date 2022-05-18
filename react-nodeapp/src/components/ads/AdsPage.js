@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-import { getLatestAds } from "./service";
+import { useState } from "react";
 import Layout from "../layout/Layout";
 import { Link } from "react-router-dom";
 import EmptyListAds from "../common/EmptyListAds";
@@ -7,17 +6,13 @@ import EmptyListAds from "../common/EmptyListAds";
 const AdsPage = ({ isLogged, onLogout }) => {
   const [ads, setAds] = useState([]);
 
-  useEffect(() => {
-    const execute = async () => {
-      const ads = await getLatestAds();
-      setAds(ads.reverse());
-    };
-    execute();
-    return () => {};
-  }, []);
+  const handleData = (ads) => {
+    setAds(ads);
+    // console.log("ads", ads);
+  };
 
   return (
-    <Layout isLogged={isLogged} onLogout={onLogout}>
+    <Layout isLogged={isLogged} onLogout={onLogout} handleData={handleData}>
       {!ads.length ? (
         <EmptyListAds />
       ) : (

@@ -30,7 +30,6 @@ const AdNewPage = ({ onLogout }) => {
   }, []);
 
   const handleChange = (event) => {
-    console.log("event.target.type", event.target.type);
     setCredentials((credentials) => ({
       ...credentials,
       // [event.target.name]: event.target.type === "radio" ? event.target.checked : event.target.value,
