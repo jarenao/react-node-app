@@ -5,10 +5,15 @@ import Layout from "../layout/Layout";
 import noImage from "../../img/no-image.jpg";
 import { getAd } from "./service";
 import EmptyAd from "../common/EmptyAd";
+import Modal from "../common/Modal";
 
 const AdDetailPage = ({ onLogout }) => {
   const [adDetail, setAdDetail] = useState(null);
   const adId = Object.values(useParams());
+
+  const [modal, setModal] = useState(false);
+  const handleModalVisible = () => setModal(true);
+  const handleModalHidden = () => setModal(false);
 
   useEffect(() => {
     getAd(adId[0]).then((adDetail) => setAdDetail(adDetail));
@@ -16,6 +21,8 @@ const AdDetailPage = ({ onLogout }) => {
 
   return (
     <Layout onLogout={onLogout}>
+      {modal && <Modal handleModalHidden={handleModalHidden} />}
+
       {!adDetail ? (
         <EmptyAd />
       ) : (
@@ -56,6 +63,7 @@ const AdDetailPage = ({ onLogout }) => {
                     <i
                       className="fa fa-trash icon-trash"
                       aria-hidden="true"
+                      onClick={handleModalVisible}
                     ></i>
                   </Link>
                 </div>

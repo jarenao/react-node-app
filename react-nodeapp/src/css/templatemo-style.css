@@ -1252,7 +1252,8 @@ footer .contact-info ul li a {
 }
 
 .card-link:hover .service-item {
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
   transition: 0.3s ease-in-out all;
 }
 
@@ -1402,4 +1403,34 @@ footer .contact-info ul li a {
   justify-content: center;
   height: 200px;
   color: #9f9f9f;
+}
+
+.modal-confirm {
+  background: #00000060;
+  position: fixed;
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  z-index: 40;
+  top: 0;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-confirm__content {
+  display: flex;
+  width: 400px;
+  background: white;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem;
+  border-radius: 0.5rem;
+}
+.modal-confirm__content p {
+  font-size: 1.6rem;
+  margin-bottom: 2rem;
+}
+.modal-confirm__content div button {
+  margin: auto 1rem;
 }

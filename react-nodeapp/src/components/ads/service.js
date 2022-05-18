@@ -27,5 +27,7 @@ export const createAdverts = (ad) => {
   });
 };
 
-//TODO
-// Delete anuncio :id
+export const deleteAdvert = (adId) => {
+  const url = `${adsBaseUrl}/v1/adverts/${adId}`;
+  return client.delete(url);
+};
